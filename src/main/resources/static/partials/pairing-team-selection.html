@@ -1,0 +1,42 @@
+<div ng-controller="PairTeamsCtrl" class="span6">
+   <form name="PairingForm">
+      <div class="container" align="center">
+              
+	      <div class= "row" align="center">	
+	         <div class="col-xs-6" align="left">
+	         Choose Team1: 
+	            <select name="team1Select" id="team1Select"  ng-model="team1" ng-change="updateTeam1(team1)" ng-options="team.teamName for team in teams track by team.id">
+	            </select>         
+	         </div>      
+	
+	         <div class="col-xs-6" align="left">
+	         Choose Team2: 
+	            <select name="team2Select" id="team2Select" ng-model="team2" ng-change="updateTeam2(team2)" ng-options="team.teamName for team in teams track by team.id">         
+	            </select>                  
+	         </div>         
+	      </div>	
+	      <div class="row" align="center">
+	         <div class="col-xs-6" align="left">
+	            <input type="checkbox" ng-click="checkAllTeam1(team1Players.players)" ng-model="isAllSelectedTeam1">Select all
+	            <div ng-repeat="player in team1Players.players">
+	               <input type="checkbox" ng-model="selectedTeam1Players[player.id]">{{player.firstName}} {{player.lastName}}
+	            </div>
+	         </div>
+	         <div class="col-xs-6" align="left">
+	            <input type="checkbox" ng-click="checkAllTeam2(team2Players.players)" ng-model="isAllSelectedTeam2">Select all
+	            <div ng-repeat="player in team2Players.players">
+	               <input type="checkbox" ng-model="selectedTeam2Players[player.id]">{{player.firstName}} {{player.lastName}}
+	            </div> 
+	        </div>      
+	      </div>
+          <div class="row" align="center">
+             <div class="col-xs-12" align="center">
+                <button type="button" class="btn btn-small btn-primary" ng-click="generatePairing()">Pair Teams</button>             
+             </div>
+          </div>
+
+      </div>
+           
+   </form>
+
+</div>

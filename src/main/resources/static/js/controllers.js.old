@@ -1,0 +1,16 @@
+var cwaControllers = angular.module('cwaControllers',[]);
+
+
+cwaControllers.controller('TeamListCtrl', function ($scope, $http) {
+	$http.get('http://172.28.12.234:8080/teams').success(function(data) {
+	$scope.teamsHttp = data;
+        });
+});
+
+cwaControllers.controller('TeamDetailCtrl', function($scope, $routeParams, $http) {
+      $scope.teamId = $routeParams.teamId;
+      //$http.get('http://172.28.12.234:8080/team?teamId=' + $scope.teamId).success(function(data) {
+      $http.get('http://172.28.12.234:8080/team/' + $scope.teamId).success(function(data) {
+      $scope.team = data;
+      });
+});

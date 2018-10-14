@@ -1,0 +1,40 @@
+<div class="container"> <h1>Update Team</h1>
+   <div >
+   <form novalidate="novalidate" class="form-horizontal">
+     <div class="control-group">
+         <label class="control-label" for="teamName">Team Name:</label>
+         <div class="controls">
+            <input type="text" id="teamName" ng-model="team.teamName"/>
+         </div>
+      </div>
+      <div class="control-group">
+         <label class="control-label" for="coachName">Coach Name:</label>
+         <div class="controls">
+            <input type="text" id="coachName" ng-model="team.coachName"/>
+         </div>
+      </div>
+      <div class="control-group">
+         <label class="control-label" for="players">Players:</label>
+         <table class="table table-striped table-hover">
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Weigh(lbs)</th>
+            <th>BirthDate (yyyy-mm-dd)</th>
+            <tr ng-repeat="player in team.players" class="controls" ng-form="repeatForm">
+               <input type="hidden" name="id" ng-model="player.id"/>
+               <td><input type="text" name="firstName" ng-model="player.firstName"/></td> 
+               <td><input type="text" name="lastName" ng-model="player.lastName"/></td>
+               <td><input type="text" name="weightInLbs" ng-model="player.weightInLbs"/></td>    
+               <td><input type="date" name="birthDate" ng-model="player.birthDate" format-date/></td>  
+               <td><a class="btn btn-primary" ng-click="removePlayer($index)">Delete</a></td>        
+            </tr> 
+         </table> 
+         <button type="button" ng-click="addPlayer()">Add Player</button>
+      </div>
+      <div class="control-group">
+         <a class="btn btn-small" ng-click="cancel()">Cancel</a>
+         <a class="btn btn-primary" ng-click="updateTeam()">Update Team</a>
+      </div>
+      </form>
+   </div>
+</div>

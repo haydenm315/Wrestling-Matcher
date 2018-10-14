@@ -1,0 +1,122 @@
+<div ng-controller="PairTeamsCtrl" class="span6">
+   <table class="table table-striped table-condensed">
+      <tr>
+         <th colspan="4">{{team1Name}}</th>
+         <th>&nbsp</th>
+         <th colspan="4">{{team2Name}}</th>
+         <th colspan=3">Matching Criteria</th>
+      </tr>
+      <tr>
+         <th>
+            Wrestler1
+         </th>
+         <th>
+            Class
+         </th>
+         <th>
+            Weight
+         </th>
+         <th>
+            Age
+         </th>
+         <th>
+            &nbsp;
+         </th>
+         <th>
+            Wrestler2
+         </th>
+         <th>
+            Class
+         </th>
+         <th>
+            Weight
+         </th>
+         <th>
+            Age
+         </th>
+         <th>
+            Age Diff (days)
+         </th>
+         <th>
+            Weight Diff (lbs)
+         </th>
+         <th>
+            Class Difference
+         </th>
+      </tr>
+         
+      <tbody ng:repeat="pair in getMatches()">
+         <tr>
+            <td>{{pair.player1.firstName}} {{pair.player1.lastName}}</td>
+            <td>{{pair.player1Class}}</td>
+            <td>{{pair.player1.weightInLbs}}</td>
+            <td>{{pair.player1.ageYears}}</td>
+            <td> &nbsp; </td>
+            <td>{{pair.player2.firstName}} {{pair.player2.lastName}}</td>
+            <td>{{pair.player2Class}}</td>
+            <td>{{pair.player2.weightInLbs}}</td>
+            <td>{{pair.player2.ageYears}}</td>
+            <td> <span ng-class="{red: pair.ageDifferenceDays > 720, orange: pair.ageDifferenceDays > 365 && pair.ageDifferenceDays < 720, green: pair.ageDifferenceDays < 365}">{{pair.ageDifferenceDays}}</span></td>
+            <td>{{pair.weightDifference}}</td>
+            <td>{{pair.classDifference}}</td>
+         </tr>
+      </tbody>
+   </table>
+   <hr/>
+   <b>{{team1Name}} No Matches </b>
+   
+   <table class="table table-striped table-condensed">
+      <tr>
+         <th>
+            Wrestler
+         </th>
+         <th>
+            Class
+         </th>
+         <th>
+            Weight
+         </th>
+         <th>
+            Age
+         </th>
+      <tr>
+      
+      <tbody ng:repeat="player in getNoMatches1()">
+         <tr>
+            <td>{{player.firstName}} {{player.lastName}}</td>
+            <td>{{player.matrixClass}}</td>
+            <td>{{player.weightInLbs}}</td>
+            <td>{{player.ageYears}}</td>
+         </tr>  
+      </tbody>
+   </table> 
+   <hr/>
+   <b>{{team2Name}}No Matches</b>
+   
+      <table class="table table-striped table-condensed">
+      <tr>
+         <th>
+            Wrestler
+         </th>
+         <th>
+            Class
+         </th>
+         <th>
+            Weight
+         </th>
+         <th>
+            Age
+         </th>
+      <tr>
+      
+      <tbody ng:repeat="player in getNoMatches2()">
+         <tr>
+            <td>{{player.firstName}} {{player.lastName}}</td>
+            <td>{{player.matrixClass}}</td>
+            <td>{{player.weightInLbs}}</td>
+            <td>{{player.ageYears}}</td>
+         </tr>
+      </tbody>
+   </table>
+   
+</div>
